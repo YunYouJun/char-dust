@@ -28,7 +28,6 @@ export default {
   methods: {
     onChange (file) {
       if (file) {
-        console.log(file)
         this.previewImage(file)
         this.$refs.imageUpload.clearFiles()
       }
