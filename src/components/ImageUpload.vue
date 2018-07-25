@@ -1,6 +1,5 @@
 <template>
   <el-upload
-    class="upload-demo"
     ref="imageUpload"
     drag
     action="/"
@@ -18,12 +17,21 @@
 
 <script>
 /* eslint-disable */
+import bus from '@/utils/eventBus'
 import { checkImageType } from '@/utils/imageCommon'
 export default {
   data () {
     return {
-      image: ''
+      image: '',
+      previewWidth: 0,
     }
+  },
+  mounted () {
+    let self = this
+    bus.$on('scaleImage', function(value){
+      self.previewWidth = value
+      self.scaleImageContainer(self.image)
+    })
   },
   methods: {
     onChange (file) {
@@ -50,8 +58,29 @@ export default {
     },
     scaleImageContainer(image) {
       let container = document.getElementsByClassName('el-upload-dragger')[0]
-      container.style.width = image.width + 'px'
-      container.style.height = image.height + 'px'
+      let parentContainer = container.parentElement.parentElement
+
+      let targetWidth = this.previewWidth
+
+      if (!targetWidth) {
+        targetWidth = parentContainer.clientWidth
+        if (image.width < targetWidth) {
+          targetWidth = image.width
+        }
+      } else if (targetWidth > parentContainer.clientWidth) {
+        this.$message({
+          message: '超过容器大小！请重新输入图片宽度',
+          type: 'warning',
+          showClose: true
+        })
+        return
+      }
+
+      let ratio = image.width / targetWidth
+      let targetHeight = image.height / ratio
+
+      container.style.width = targetWidth + 'px'
+      container.style.height = targetHeight + 'px'
     }
   }
 }

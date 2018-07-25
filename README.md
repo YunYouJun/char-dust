@@ -7,6 +7,6 @@ Convert image to char.
 ## Intend
 
 - [x] Read Image
-- [ ] Scale Image
+- [x] Scale Image
 - [ ] Convert to Char
 - [ ] Console

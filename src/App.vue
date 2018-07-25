@@ -17,6 +17,8 @@
     </el-header>
   
     <el-main>
+      <convert-config></convert-config>
+      <hr>
       <image-upload></image-upload>
     </el-main>
 
@@ -27,11 +29,13 @@
 </template>
 
 <script>
+import ConvertConfig from '@/components/ConvertConfig'
 import ImageUpload from '@/components/ImageUpload'
 
 export default {
   name: 'app',
   components: {
+    ConvertConfig,
     ImageUpload
   },
   data () {
