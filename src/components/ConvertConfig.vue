@@ -21,7 +21,7 @@ export default {
         size: null,
         char: '@#&$%863!i1uazvno~;*^+-. '
       },
-      step: 100
+      step: 50
     }
   },
   methods: {

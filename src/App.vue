@@ -19,12 +19,9 @@
     <el-main>
       <convert-config></convert-config>
       <hr>
+      <br>
       <image-upload></image-upload>
     </el-main>
-
-    <el-footer>
-      <vue-about-me :copyright="copyright"></vue-about-me>
-    </el-footer>
   </div>
 </template>
 
@@ -40,12 +37,7 @@ export default {
   },
   data () {
     return {
-      copyright: {
-        name: 'char-dust',
-        repoName: 'char-dust',
-        author: 'YunYouJun',
-        logo: '#icon-cloud'
-      }
+      
     }
   }
 }

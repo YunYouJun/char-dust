@@ -12,8 +12,7 @@
   "dependencies": {
     "element-theme-ink": "^1.0.0",
     "element-ui": "^2.4.4",
-    "vue": "^2.5.16",
-    "vue-about-me": "^0.1.0"
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.5",
