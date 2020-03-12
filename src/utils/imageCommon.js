@@ -1,8 +1,8 @@
 const IMAGE_TYPES_RE = {
   PNG: /image\/png/,
   JPG: /image\/jpe?g/,
-  GIF: /image\/gif/,
-}
+  GIF: /image\/gif/
+};
 
 /**
  * 获取图片类型(png, jpg, gif)
@@ -13,9 +13,9 @@ const IMAGE_TYPES_RE = {
  */
 export function getImageType(type) {
   for (const typeName in IMAGE_TYPES_RE) {
-    const typeRe = IMAGE_TYPES_RE[typeName]
+    const typeRe = IMAGE_TYPES_RE[typeName];
     if (typeRe.test(type)) {
-      return typeName
+      return typeName;
     }
   }
 }
@@ -29,10 +29,10 @@ export function getImageType(type) {
  */
 export function checkImageType(type) {
   for (const typeName in IMAGE_TYPES_RE) {
-    const typeRe = IMAGE_TYPES_RE[typeName]
+    const typeRe = IMAGE_TYPES_RE[typeName];
     if (typeRe.test(type)) {
-      return true
+      return true;
     }
   }
-  return false
+  return false;
 }

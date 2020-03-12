@@ -1,7 +1,13 @@
 <template>
   <el-form :inline="true" :model="config">
     <el-form-item label="图片大小">
-      <el-input-number v-model="config.size" @change="handleChange" :min="0" :step="step" label="图片大小"></el-input-number>
+      <el-input-number
+        v-model="config.size"
+        @change="handleChange"
+        :min="0"
+        :step="step"
+        label="图片大小"
+      ></el-input-number>
     </el-form-item>
     <el-form-item label="转换字符">
       <el-input v-model="config.char" placeholder="转换字符"></el-input>
@@ -13,29 +19,26 @@
 </template>
 
 <script>
-import bus from '@/utils/eventBus'
+import bus from "@/utils/eventBus";
 export default {
-  data () {
+  data() {
     return {
       config: {
         size: null,
-        char: '@#&$%863!i1uazvno~;*^+-. '
+        char: "@#&$%863!i1uazvno~;*^+-. "
       },
       step: 50
-    }
+    };
   },
   methods: {
-    handleChange (value) {
-      bus.$emit('scaleImage', value)
+    handleChange(value) {
+      bus.$emit("scaleImage", value);
     },
-    convert () {
-      // eslint-disable-next-line
-      console.log('convert')
+    convert() {
+      alert("Deving...");
     }
   }
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

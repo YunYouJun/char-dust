@@ -1,9 +1,8 @@
-const pkg = require('./package.json')
+const pkg = require("./package.json");
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production'
-    ? '/' + pkg.name + '/'
-    : '/',
+  publicPath:
+    process.env.NODE_ENV === "production" ? "/" + pkg.name + "/" : "/",
   css: {
     extract: true
   }
-}
+};
