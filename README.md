@@ -1,12 +1,16 @@
 # char-dust
 
-[![GitHub Pages](https://github.com/YunYouJun/char-dust/workflows/gh-pages/badge.svg)](https://yunyoujun.github.io/char-dust/)
+[![GitHub Pages](https://github.com/YunYouJun/char-dust/workflows/GitHub%20Pages/badge.svg)](https://yunyoujun.github.io/char-dust/)
 
 Convert image to char.
 
 [Demo](https://yunyoujun.github.io/char-dust/)
 
 Deving...
+
+## Feature
+
+- [x] 组件全部按需引入
 
 ## Intend
 

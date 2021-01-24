@@ -33,11 +33,11 @@ export default {
   name: "app",
   components: {
     ConvertConfig,
-    ImageUpload
+    ImageUpload,
   },
   data() {
     return {};
-  }
+  },
 };
 </script>
 

@@ -1,7 +1,7 @@
 const IMAGE_TYPES_RE = {
   PNG: /image\/png/,
   JPG: /image\/jpe?g/,
-  GIF: /image\/gif/
+  GIF: /image\/gif/,
 };
 
 /**

@@ -25,9 +25,9 @@ export default {
     return {
       config: {
         size: null,
-        char: "@#&$%863!i1uazvno~;*^+-. "
+        char: "@#&$%863!i1uazvno~;*^+-. ",
       },
-      step: 50
+      step: 50,
     };
   },
   methods: {
@@ -36,8 +36,8 @@ export default {
     },
     convert() {
       alert("Deving...");
-    }
-  }
+    },
+  },
 };
 </script>
 

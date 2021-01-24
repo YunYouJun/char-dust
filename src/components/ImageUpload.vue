@@ -25,14 +25,13 @@ export default {
   data() {
     return {
       image: "",
-      previewWidth: 0
+      previewWidth: 300,
     };
   },
   mounted() {
-    let self = this;
-    bus.$on("scaleImage", function(value) {
-      self.previewWidth = value;
-      self.scaleImageContainer(self.image);
+    bus.$on("scaleImage", (value) => {
+      this.previewWidth = value;
+      this.scaleImageContainer(this.image);
     });
   },
   methods: {
@@ -50,17 +49,17 @@ export default {
       let self = this;
       const reader = new FileReader();
       reader.readAsDataURL(file.raw);
-      reader.onload = function(event) {
+      reader.onload = function (event) {
         self.image = new Image();
-        self.image.onload = function() {
+        self.image.onload = function () {
           self.scaleImageContainer(self.image);
         };
         self.image.src = event.target.result;
       };
     },
     scaleImageContainer(image) {
-      let container = document.getElementsByClassName("el-upload-dragger")[0];
-      let parentContainer = container.parentElement.parentElement;
+      const container = document.getElementsByClassName("el-upload-dragger")[0];
+      const parentContainer = container.parentElement.parentElement;
 
       let targetWidth = this.previewWidth;
 
@@ -73,7 +72,7 @@ export default {
         this.$message({
           message: "超过容器大小！请重新输入图片宽度",
           type: "warning",
-          showClose: true
+          showClose: true,
         });
         return;
       }
@@ -83,8 +82,8 @@ export default {
 
       container.style.width = targetWidth + "px";
       container.style.height = targetHeight + "px";
-    }
-  }
+    },
+  },
 };
 </script>
 

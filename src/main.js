@@ -10,7 +10,8 @@ import {
   Input,
   InputNumber,
   Main,
-  Upload
+  Upload,
+  Message,
 } from "element-ui";
 import "element-theme-ink";
 
@@ -24,9 +25,12 @@ Vue.use(Input);
 Vue.use(InputNumber);
 Vue.use(Main);
 Vue.use(Upload);
+Vue.use(Message);
 
 Vue.config.productionTip = false;
 
+Vue.prototype.$message = Message;
+
 new Vue({
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

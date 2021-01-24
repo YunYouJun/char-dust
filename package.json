@@ -3,30 +3,32 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
+    "dev": "yarn serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^3.6.4",
-    "element-theme-ink": "^1.0.1",
-    "element-ui": "^2.13.0",
-    "register-service-worker": "^1.7.0",
-    "vue": "^2.6.11"
+    "@ctrl/tinycolor": "^3.3.3",
+    "core-js": "^3.8.3",
+    "element-theme-ink": "^1.1.0",
+    "element-ui": "^2.15.0",
+    "register-service-worker": "^1.7.2",
+    "vue": "^2.6.12"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.2.3",
-    "@vue/cli-plugin-eslint": "^4.2.3",
-    "@vue/cli-plugin-pwa": "^4.2.3",
-    "@vue/cli-service": "^4.2.3",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-plugin-eslint": "^4.5.11",
+    "@vue/cli-plugin-pwa": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "lint-staged": "^10.0.8",
-    "prettier": "^1.19.1",
-    "vue-template-compiler": "^2.6.11"
+    "eslint": "^7.18.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.5.0",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "vue-template-compiler": "^2.6.12"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
