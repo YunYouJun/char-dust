@@ -33,7 +33,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,vue}": [
+    "*.{ts}": [
       "yarn lint",
       "git add"
     ]

@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-import BaseHeader from "./components/Baseheader.vue";
+import BaseHeader from "./components/BaseHeader.vue";
 import ImageUpload from "./components/ImageUpload.vue";
 import GithubCorner from "./components/GithubCorner.vue";
 
