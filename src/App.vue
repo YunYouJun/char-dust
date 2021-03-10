@@ -1,44 +1,30 @@
 <template>
-  <div id="app">
-    <el-header>
-      <h2>
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-image"></use>
-        </svg>
-        &nbsp;
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-right"></use>
-        </svg>
-        &nbsp;
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-text"></use>
-        </svg>
-      </h2>
-    </el-header>
+  <el-header>
+    <base-header />
+  </el-header>
 
-    <el-main>
-      <convert-config></convert-config>
-      <hr />
-      <br />
-      <image-upload></image-upload>
-    </el-main>
-  </div>
+  <el-main>
+    <image-upload />
+  </el-main>
+
+  <github-corner />
 </template>
 
-<script>
-import ConvertConfig from "@/components/ConvertConfig";
-import ImageUpload from "@/components/ImageUpload";
+<script lang="ts">
+import { defineComponent } from "vue";
 
-export default {
-  name: "app",
+import BaseHeader from "./components/Baseheader.vue";
+import ImageUpload from "./components/ImageUpload.vue";
+import GithubCorner from "./components/GithubCorner.vue";
+
+export default defineComponent({
+  name: "App",
   components: {
-    ConvertConfig,
+    BaseHeader,
     ImageUpload,
+    GithubCorner,
   },
-  data() {
-    return {};
-  },
-};
+});
 </script>
 
 <style>
@@ -49,5 +35,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
 }
 </style>

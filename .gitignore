@@ -3,8 +3,10 @@ yarn.lock
 package-lock.json
 
 .DS_Store
-node_modules
-/dist
+node_modules/
+dist/
+dist-ssr/
+*.local
 
 # local env files
 .env.local

@@ -1,4 +1,25 @@
 <template>
+  <el-form :inline="true" :model="config">
+    <el-form-item label="图片大小">
+      <el-input-number
+        v-model="config.size"
+        @change="handleChange"
+        :min="0"
+        :step="step"
+        label="图片大小"
+      ></el-input-number>
+    </el-form-item>
+    <el-form-item label="转换字符">
+      <el-input v-model="config.char" placeholder="转换字符"></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="convert">转换</el-button>
+    </el-form-item>
+  </el-form>
+
+  <hr />
+  <br />
+
   <el-upload
     ref="imageUpload"
     drag
@@ -7,84 +28,102 @@
     :accept="'image/*'"
     :auto-upload="false"
     :on-change="onChange"
+    :before-upload="beforeImageUpload"
   >
     <i class="el-icon-upload"></i>
     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-    <div class="el-upload__tip" slot="tip">
-      只能上传 jpg/png/gif 文件，且尽量不要过大
+    <div class="el-upload__tip">
+      只能上传 {{ supportedFormats.join("/") }} 文件，且尽量不要过大
     </div>
     <img class="preview-image" :src="image.src" />
   </el-upload>
 </template>
 
-<script>
-/* eslint-disable */
-import bus from "@/utils/eventBus";
-import { checkImageType } from "@/utils/imageCommon";
-export default {
+<script lang="ts">
+import { UploadFile } from "element-plus/lib/el-upload/src/upload.type";
+import { defineComponent } from "vue";
+import { checkImageType } from "../utils/imageCommon";
+export default defineComponent({
   data() {
     return {
-      image: "",
-      previewWidth: 300,
+      config: {
+        size: 300,
+        char: "@#&$%863!i1uazvno~;*^+-. ",
+      },
+
+      step: 50,
+      image: new Image(),
+      supportedFormats: ["jpg", "png", "gif"],
     };
   },
-  mounted() {
-    bus.$on("scaleImage", (value) => {
-      this.previewWidth = value;
-      this.scaleImageContainer(this.image);
-    });
-  },
   methods: {
-    onChange(file) {
+    handleChange() {
+      if (this.image) {
+        this.scaleImageContainer(this.image);
+      }
+    },
+
+    convert() {
+      this.$message.success("转化完成");
+    },
+
+    /**
+     * 当改变设置的图片大小时
+     */
+    onChange(file: UploadFile) {
       if (file) {
         this.previewImage(file);
-        this.$refs.imageUpload.clearFiles();
+        (this.$refs.imageUpload as any).clearFiles();
       }
     },
-    previewImage(file) {
-      if (!checkImageType(file.raw.type)) {
-        alert("不支持该格式的文件");
-        return;
+
+    beforeImageUpload(file: File) {
+      if (!checkImageType(file.type)) {
+        this.$message.error(
+          `目前只支持 ${this.supportedFormats.join("/")} 格式的文件`
+        );
+        return false;
       }
-      let self = this;
+      return true;
+    },
+    /**
+     * 预览图片
+     */
+    previewImage(file: UploadFile) {
       const reader = new FileReader();
       reader.readAsDataURL(file.raw);
-      reader.onload = function (event) {
-        self.image = new Image();
-        self.image.onload = function () {
-          self.scaleImageContainer(self.image);
+      reader.onload = (event) => {
+        this.image = new Image();
+        this.image.onload = () => {
+          if (this.image) {
+            this.scaleImageContainer(this.image);
+          }
         };
-        self.image.src = event.target.result;
+        if (event.target) {
+          this.image.src = event.target.result as string;
+        }
       };
     },
-    scaleImageContainer(image) {
-      const container = document.getElementsByClassName("el-upload-dragger")[0];
-      const parentContainer = container.parentElement.parentElement;
+    /**
+     * 缩放 Upload Image 容器大小
+     */
+    scaleImageContainer(image: HTMLImageElement) {
+      const uploadContainer = document.querySelector(
+        ".el-upload-dragger"
+      ) as HTMLElement;
 
-      let targetWidth = this.previewWidth;
-
-      if (!targetWidth) {
-        targetWidth = parentContainer.clientWidth;
-        if (image.width < targetWidth) {
-          targetWidth = image.width;
-        }
-      } else if (targetWidth > parentContainer.clientWidth) {
-        this.$message({
-          message: "超过容器大小！请重新输入图片宽度",
-          type: "warning",
-          showClose: true,
-        });
-        return;
+      let targetWidth = this.config.size;
+      if (!targetWidth || (image.width && image.width < targetWidth)) {
+        targetWidth = image.width;
       }
 
-      let ratio = image.width / targetWidth;
-      let targetHeight = image.height / ratio;
-
-      container.style.width = targetWidth + "px";
-      container.style.height = targetHeight + "px";
+      const ratio = image.width / targetWidth;
+      const targetHeight = image.height / ratio;
+      uploadContainer.style.width = targetWidth + "px";
+      uploadContainer.style.height = targetHeight + "px";
     },
   },
-};
+});
 </script>
 
 <style>

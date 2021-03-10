@@ -9,18 +9,18 @@ export const FONT_HEIGHT = 12;
 
 /**
  * 亮度转字符
- * @param {number} brightness
+ * @param brightness
  */
-function grayToText(brightness) {
+export function grayToText(brightness: number): any {
   // Todo
   return brightness;
 }
 
 /**
  * 图片转字符
- * @param {ImageData} imageData
+ * @param imageData
  */
-export function imageToText(imageData) {
+export function imageToText(imageData: ImageData): string[] {
   const data = imageData.data;
   const width = imageData.width;
   const height = imageData.height;

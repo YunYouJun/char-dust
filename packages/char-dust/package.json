@@ -1,0 +1,10 @@
+{
+  "name": "char-dust",
+  "version": "0.0.1",
+  "description": "convert image to char",
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rm -rf dist",
+    "dev": ""
+  }
+}
