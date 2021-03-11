@@ -1,36 +1,37 @@
 {
-  "version": "0.2.0",
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "name": "char-dust",
+  "version": "0.0.2",
+  "description": "convert image to ascii",
+  "main": "./dist/char-dust.umd.js",
+  "module": "./dist/char-dust.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/char-dust.es.js",
+      "require": "./dist/char-dust.umd.js"
+    }
+  },
+  "files": [
+    "dist"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "build:lib": "cd packages/char-dust && yarn build",
-    "serve": "vite preview",
-    "lint": "eslint . --ext .ts"
+    "build": "yarn clean && tsc",
+    "build:demo": "cd demo && yarn build",
+    "clean": "rm -rf dist",
+    "dev": "cd demo && yarn dev",
+    "lint": "eslint . --ext .ts",
+    "prepublishOnly": "yarn build"
   },
+  "license": "MIT",
   "dependencies": {
-    "@ctrl/tinycolor": "^3.4.0",
-    "char-dust": "^0.0.1",
-    "element-plus": "^1.0.2-beta.33",
-    "element-theme-ink": "^1.1.0",
-    "sass": "^1.32.8",
-    "vue": "^3.0.7"
+    "@ctrl/tinycolor": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.33",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
-    "@vitejs/plugin-vue": "^1.1.5",
-    "@vue/compiler-sfc": "^3.0.7",
     "eslint": "^7.21.0",
-    "eslint-plugin-vue": "^7.7.0",
     "lint-staged": "^10.5.4",
     "typescript": "^4.2.3",
-    "vite": "^2.0.5",
-    "vite-plugin-pwa": "^0.5.6",
     "yorkie": "^2.0.0"
   },
   "gitHooks": {

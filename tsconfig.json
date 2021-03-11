@@ -1,26 +1,14 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "esnext",
-    "module": "esnext",
+    "outDir": "dist",
     "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "types": ["vite/client"],
+    "resolveJsonModule": true,
+    "declaration": true,
     "paths": {
-      "char-dust": ["packages/char-dust/src/index"]
-    },
-    "allowSyntheticDefaultImports": true
+      "char-dust": ["src/index.ts"]
+    }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "packages/**/*.ts"
-  ]
+  "include": ["src/*.ts"]
 }

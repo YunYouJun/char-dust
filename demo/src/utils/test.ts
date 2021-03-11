@@ -1,4 +1,4 @@
-import pkg from "../../packages/char-dust/package.json";
+import pkg from "../../../package.json";
 
 console.log(
   `%c Char-Dust v${pkg.version} %c @YunYouJun `,

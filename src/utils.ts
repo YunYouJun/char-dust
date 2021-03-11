@@ -1,5 +1,18 @@
 export function getImageData(image: HTMLImageElement) {
-  const canvas = document.createElement("canvas");
+  let canvas;
+
+  if (document) {
+    canvas = document.createElement("canvas");
+  } else if (require("canvas")) {
+    const { createCanvas } = require("canvas");
+    canvas = createCanvas(image.width, image.height);
+  } else {
+    console.warn(
+      "If you use it in Node.js without document, you need `npm install canvas`."
+    );
+    return;
+  }
+
   const ctx = canvas.getContext("2d");
 
   const ratio = image.width / image.naturalWidth;
