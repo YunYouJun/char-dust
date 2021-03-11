@@ -7,6 +7,8 @@ import "element-theme-ink";
 
 import "./utils/test";
 
+import "./assets/scss/index.scss";
+
 const app = createApp(App);
 app.use(ElementPlus);
 app.mount("#app");

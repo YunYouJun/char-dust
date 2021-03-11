@@ -1,5 +1,4 @@
 {
-  "name": "char-dust",
   "version": "0.2.0",
   "private": true,
   "workspaces": [
@@ -14,6 +13,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0",
+    "char-dust": "^0.0.1",
     "element-plus": "^1.0.2-beta.33",
     "element-theme-ink": "^1.1.0",
     "sass": "^1.32.8",

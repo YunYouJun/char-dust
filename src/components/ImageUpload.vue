@@ -155,11 +155,4 @@ export default defineComponent({
 .preview-image[src=""] {
   visibility: hidden;
 }
-
-.el-textarea__inner {
-  font-family: Menlo, monospace;
-  font-size: 12px !important;
-  margin: 0 auto;
-  text-align: center;
-}
 </style>

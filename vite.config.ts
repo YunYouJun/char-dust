@@ -2,7 +2,7 @@ import path from "path";
 
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import pkg from "./package.json";
+import pkg from "./packages/char-dust/package.json";
 
 import { VitePWA } from "vite-plugin-pwa";
 
