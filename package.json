@@ -1,15 +1,9 @@
 {
   "name": "char-dust",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "convert image to ascii",
-  "main": "./dist/char-dust.umd.js",
-  "module": "./dist/char-dust.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/char-dust.es.js",
-      "require": "./dist/char-dust.umd.js"
-    }
-  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
