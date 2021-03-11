@@ -2,9 +2,13 @@
   "name": "char-dust",
   "version": "0.2.0",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:lib": "cd packages/char-dust && yarn build",
     "serve": "vite preview",
     "lint": "eslint . --ext .ts"
   },

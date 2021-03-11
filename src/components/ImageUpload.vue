@@ -37,12 +37,19 @@
     </div>
     <img class="preview-image" :src="image.src" />
   </el-upload>
+
+  <hr />
+
+  <el-input type="textarea" autosize placeholder="ASCII 画" v-model="textarea">
+  </el-input>
 </template>
 
 <script lang="ts">
 import { UploadFile } from "element-plus/lib/el-upload/src/upload.type";
 import { defineComponent } from "vue";
 import { checkImageType } from "../utils/imageCommon";
+import { imageToText, getImageData } from "char-dust";
+
 export default defineComponent({
   data() {
     return {
@@ -54,6 +61,8 @@ export default defineComponent({
       step: 50,
       image: new Image(),
       supportedFormats: ["jpg", "png", "gif"],
+
+      textarea: "",
     };
   },
   methods: {
@@ -64,6 +73,10 @@ export default defineComponent({
     },
 
     convert() {
+      const imageData = getImageData(this.image);
+      const text = imageToText(imageData);
+      this.textarea = text.join("\n");
+      console.log(text);
       this.$message.success("转化完成");
     },
 
@@ -113,12 +126,16 @@ export default defineComponent({
       ) as HTMLElement;
 
       let targetWidth = this.config.size;
-      if (!targetWidth || (image.width && image.width < targetWidth)) {
+      if (!targetWidth) {
         targetWidth = image.width;
       }
 
       const ratio = image.width / targetWidth;
       const targetHeight = image.height / ratio;
+
+      image.width = targetWidth;
+      image.height = targetHeight;
+
       uploadContainer.style.width = targetWidth + "px";
       uploadContainer.style.height = targetHeight + "px";
     },
@@ -126,7 +143,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
 .preview-image {
   position: absolute;
   top: 0;
@@ -137,5 +154,12 @@ export default defineComponent({
 
 .preview-image[src=""] {
   visibility: hidden;
+}
+
+.el-textarea__inner {
+  font-family: Menlo, monospace;
+  font-size: 12px !important;
+  margin: 0 auto;
+  text-align: center;
 }
 </style>

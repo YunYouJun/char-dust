@@ -2,9 +2,15 @@
   "name": "char-dust",
   "version": "0.0.1",
   "description": "convert image to char",
+  "main": "./dist/char-dust.umd.js",
+  "module": "./dist/char-dust.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/char-dust.es.js",
+      "require": "./dist/char-dust.umd.js"
+    }
+  },
   "scripts": {
-    "build": "yarn clean && tsc",
-    "clean": "rm -rf dist",
-    "dev": ""
+    "build": "vite build"
   }
 }

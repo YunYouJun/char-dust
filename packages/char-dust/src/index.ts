@@ -1,4 +1,7 @@
 import { TinyColor } from "@ctrl/tinycolor";
+import { DEFAULT_AVAILABLE_CHARS } from "./constant";
+
+export * from "./utils";
 
 export const FONT_WIDTH = 6;
 export const FONT_HEIGHT = 12;
@@ -11,9 +14,17 @@ export const FONT_HEIGHT = 12;
  * 亮度转字符
  * @param brightness
  */
-export function grayToText(brightness: number): any {
-  // Todo
-  return brightness;
+export function grayToText(
+  brightness: number,
+  chars = DEFAULT_AVAILABLE_CHARS
+): string {
+  const gap = 255 / chars.length;
+
+  let charIndex = Math.floor(brightness / gap);
+  if (charIndex >= chars.length) {
+    charIndex = chars.length - 1;
+  }
+  return chars[charIndex];
 }
 
 /**
