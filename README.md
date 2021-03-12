@@ -36,9 +36,32 @@ console.log(text);
 
 ### Node.js
 
+#### Method 1: with node-canvas
+
 If you use it in Node.js without document, you need `npm install canvas`.
 
-> [node-canvas](https://github.com/Automattic/node-canvas)
+> [node-canvas](https://github.com/Automattic/node-canvas): need node-pre-gyp
+
+#### Method 2: without native dependencies
+
+```ts
+import jimp from "jimp";
+import ImageData from "@canvas/image-data";
+import { imageToText } from "char-dust";
+import { resolve } from "path";
+
+jimp.read(resolve(__dirname, "./cat-of-the-rebellion.jpg")).then((image) => {
+  image.scale(5);
+  const imageData = new ImageData(
+    Uint8ClampedArray.from(image.bitmap.data),
+    image.bitmap.width,
+    image.bitmap.height
+  );
+
+  const text = imageToText(imageData);
+  console.log(text);
+});
+```
 
 ## Functions
 
