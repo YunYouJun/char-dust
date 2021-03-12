@@ -1,4 +1,4 @@
-export function getImageData(image: HTMLImageElement) {
+export function getImageData(image: HTMLImageElement): ImageData {
   let canvas;
 
   if (document) {

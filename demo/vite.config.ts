@@ -34,4 +34,7 @@ export default defineConfig({
       "char-dust": path.resolve(__dirname, "../src/index.ts"),
     },
   },
+  optimizeDeps: {
+    exclude: ["canvas"],
+  },
 });

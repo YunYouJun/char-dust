@@ -48,14 +48,14 @@
 import { UploadFile } from "element-plus/lib/el-upload/src/upload.type";
 import { defineComponent } from "vue";
 import { checkImageType } from "../utils/imageCommon";
-import { imageToText, getImageData } from "char-dust";
+import { imageToText, getImageData, DEFAULT_AVAILABLE_CHARS } from "char-dust";
 
 export default defineComponent({
   data() {
     return {
       config: {
         size: 300,
-        char: "@#&$%863!i1uazvno~;*^+-. ",
+        char: DEFAULT_AVAILABLE_CHARS,
       },
 
       step: 50,
@@ -74,7 +74,7 @@ export default defineComponent({
 
     convert() {
       const imageData = getImageData(this.image);
-      const text = imageToText(imageData);
+      const text = imageToText(imageData, this.config.char);
       this.textarea = text.join("\n");
       console.log(text);
       this.$message.success("转化完成");
