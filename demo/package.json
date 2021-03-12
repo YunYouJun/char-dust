@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0",
-    "element-plus": "^1.0.2-beta.33",
+    "element-plus": "1.0.2-beta.32",
     "element-theme-ink": "^1.1.0",
     "sass": "^1.32.8",
     "vue": "^3.0.7"
