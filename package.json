@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "yarn clean && tsc",
-    "build:demo": "cd demo && yarn build",
+    "build:demo": "cd demo && yarn && yarn build",
     "clean": "rm -rf dist",
     "dev": "cd demo && yarn dev",
     "lint": "eslint . --ext .ts",

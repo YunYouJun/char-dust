@@ -5,16 +5,33 @@
 
 Convert image to char.
 
-[Demo](https://yunyoujun.github.io/char-dust/)
+[示例 | Demo](https://yunyoujun.github.io/char-dust/)
+
+<div style="text-align:center">
+<img src="./demo/public/img/example/夹心酱.jpg" width='200' alt="夹心酱"/>
+<img src="./demo/public/img/example/jashin.jpg" width='200' alt="jashin char"/>
+</div>
 
 ## Usage
 
 ```sh
 yarn add char-dust
+# npm install char-dust
+```
+
+```html
+<img id="demo-image" src="xxx" />
 ```
 
 ```ts
 import { imageToText, getImageData } from "char-dust";
+
+const imageElement = document.getElementById("demo-image");
+const imageData = getImageData(imageElement);
+// const text = imageToText(imageData);
+// default is "@#&$%863!i1uazvno~;*^+-. "
+const text = imageToText(imageData, "@#&$%863!i1uazvno~;*^+-. ");
+console.log(text);
 ```
 
 ### Node.js
@@ -37,4 +54,5 @@ If you use it in Node.js without document, you need `npm install canvas`.
 
 ## Ref
 
+- [jscii](https://github.com/EnotionZ/jscii)
 - [image-to-text](https://github.com/kainstar/image-to-text)
