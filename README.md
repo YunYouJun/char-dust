@@ -70,6 +70,7 @@ jimp.read(resolve(__dirname, "./cat-of-the-rebellion.jpg")).then((image) => {
 - [x] Convert to Char
 - [x] Console
 - [x] npm package
+- [ ] Gif
 
 ## Todo
 

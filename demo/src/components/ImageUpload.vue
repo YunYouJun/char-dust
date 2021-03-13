@@ -38,16 +38,24 @@
     <img class="preview-image" :src="image.src" />
   </el-upload>
 
-  <hr />
+  <el-slider v-model="config.scale" show-input> </el-slider>
 
-  <el-input type="textarea" autosize placeholder="ASCII 画" v-model="textarea">
+  <el-input
+    type="textarea"
+    autosize
+    placeholder="ASCII 画"
+    v-model="textarea"
+    :style="textareaStyle"
+  >
   </el-input>
 </template>
 
 <script lang="ts">
-import { UploadFile } from "element-plus/lib/el-upload/src/upload.type";
 import { defineComponent } from "vue";
+
+import { UploadFile } from "element-plus/lib/el-upload/src/upload.type";
 import { checkImageType } from "../utils/imageCommon";
+
 import { imageToText, getImageData, DEFAULT_AVAILABLE_CHARS } from "char-dust";
 
 export default defineComponent({
@@ -56,6 +64,8 @@ export default defineComponent({
       config: {
         size: 300,
         char: DEFAULT_AVAILABLE_CHARS,
+
+        scale: 100,
       },
 
       step: 50,
@@ -64,6 +74,15 @@ export default defineComponent({
 
       textarea: "",
     };
+  },
+  computed: {
+    textareaStyle() {
+      return {
+        width: 100 / (this.config.scale / 100) + "%",
+        transformOrigin: "left top",
+        transform: `scale(${this.config.scale / 100})`,
+      };
+    },
   },
   methods: {
     handleChange() {
@@ -126,7 +145,7 @@ export default defineComponent({
       ) as HTMLElement;
 
       let targetWidth = this.config.size;
-      if (!targetWidth) {
+      if (!targetWidth && image.width) {
         targetWidth = image.width;
       }
 

@@ -15,6 +15,15 @@
     "lint": "eslint . --ext .ts",
     "prepublishOnly": "yarn build"
   },
+  "author": {
+    "name": "YunYouJun",
+    "url": "https://www.yunyoujun.cn",
+    "email": "me@yunyoujun.cn"
+  },
+  "repository": {
+    "url": "https://github.com/YunYouJun/char-dust/",
+    "type": "git"
+  },
   "license": "MIT",
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.0"

@@ -7,7 +7,7 @@
     <image-upload />
   </el-main>
 
-  <github-corner />
+  <github-corner :url="url" color="#70b7fd" />
 </template>
 
 <script lang="ts">
@@ -17,12 +17,19 @@ import BaseHeader from "./components/BaseHeader.vue";
 import ImageUpload from "./components/ImageUpload.vue";
 import GithubCorner from "./components/GithubCorner.vue";
 
+import pkg from "../../package.json";
+
 export default defineComponent({
   name: "App",
   components: {
     BaseHeader,
     ImageUpload,
     GithubCorner,
+  },
+  data() {
+    return {
+      url: pkg.repository.url,
+    };
   },
 });
 </script>
@@ -43,5 +50,9 @@ export default defineComponent({
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+
+.el-main {
+  overflow: hidden !important;
 }
 </style>

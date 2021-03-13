@@ -1,21 +1,15 @@
 <template>
   <a
-    href="https://github.com/YunYouJun/char-dust/"
+    :href="url"
     target="_blank"
     class="github-corner"
     aria-label="View source on Github"
-    ><svg
+  >
+    <svg
       width="80"
       height="80"
       viewBox="0 0 250 250"
-      style="
-        fill: #70b7fd;
-        color: #fff;
-        position: absolute;
-        top: 0;
-        border: 0;
-        right: 0;
-      "
+      :style="styles"
       aria-hidden="true"
     >
       <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -33,10 +27,38 @@
   ></a>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  props: {
+    url: String,
+    color: {
+      type: String,
+      default: "black",
+    },
+  },
+  computed: {
+    styles() {
+      return {
+        fill: this.color,
+        color: "#fff",
+        position: "absolute",
+        top: 0,
+        border: 0,
+        right: 0,
+      };
+    },
+  },
+});
+</script>
+
+
 <style>
 .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
 }
+
 @keyframes octocat-wave {
   0%,
   100% {
@@ -51,6 +73,7 @@
     transform: rotate(10deg);
   }
 }
+
 @media (max-width: 500px) {
   .github-corner:hover .octo-arm {
     animation: none;
