@@ -19,6 +19,8 @@ yarn add char-dust
 # npm install char-dust
 ```
 
+### Browser
+
 ```html
 <img id="demo-image" src="xxx" />
 ```
@@ -40,17 +42,27 @@ console.log(text);
 
 If you use it in Node.js without document, you need `npm install canvas`.
 
+```sh
+yarn add canvas
+```
+
 > [node-canvas](https://github.com/Automattic/node-canvas): need node-pre-gyp
 
 #### Method 2: without native dependencies
 
+```sh
+yarn add jimp @canvas/image-data
+```
+
 ```ts
+import path from "path";
 import jimp from "jimp";
 import ImageData from "@canvas/image-data";
 import { imageToText } from "char-dust";
-import { resolve } from "path";
 
-jimp.read(resolve(__dirname, "./cat-of-the-rebellion.jpg")).then((image) => {
+const imagePath = path.resolve(__dirname, "./cat-of-the-rebellion.jpg");
+jimp.read(imagePath).then((image) => {
+  // Magnify 5x
   image.scale(5);
   const imageData = new ImageData(
     Uint8ClampedArray.from(image.bitmap.data),
