@@ -7,6 +7,8 @@ Convert image to char.
 
 [示例 | Demo](https://yunyoujun.github.io/char-dust/)
 
+> [由来 | Why char-dust?](https://www.yunyoujun.cn/posts/why-make-char-dust/)
+
 <div style="text-align:center">
 <img src="./demo/public/img/example/夹心酱.jpg" width='200' alt="夹心酱"/>
 <img src="./demo/public/img/example/jashin.jpg" width='200' alt="jashin char"/>
@@ -46,7 +48,7 @@ If you use it in Node.js without document, you need `npm install canvas`.
 yarn add canvas
 ```
 
-> [node-canvas](https://github.com/Automattic/node-canvas): need node-pre-gyp
+> [node-canvas](https://github.com/Automattic/node-canvas): need [node-pre-gyp](https://github.com/mapbox/node-pre-gyp)
 
 #### Method 2: without native dependencies
 
