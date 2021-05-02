@@ -11,6 +11,7 @@
     "element-theme-ink": "^1.1.1",
     "sass": "^1.32.8",
     "vue": "^3.0.7",
+    "vue-about-me": "^1.0.0-alpha.5",
     "vue-gh-corners": "^3.0.1"
   },
   "devDependencies": {

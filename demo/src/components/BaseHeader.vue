@@ -1,15 +1,9 @@
 <template>
   <h2>
-    <svg class="icon" aria-hidden="true">
-      <use xlink:href="#icon-image"></use>
-    </svg>
+    <span class="iconify" data-icon="ri:image-line"></span>
     &nbsp;
-    <svg class="icon" aria-hidden="true">
-      <use xlink:href="#icon-right"></use>
-    </svg>
+    <span class="iconify" data-icon="ri:arrow-right-line"></span>
     &nbsp;
-    <svg class="icon" aria-hidden="true">
-      <use xlink:href="#icon-text"></use>
-    </svg>
+    <span class="iconify" data-icon="ri:file-text-line"></span>
   </h2>
 </template>

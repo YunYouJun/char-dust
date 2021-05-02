@@ -8,6 +8,9 @@
   </el-main>
 
   <github-corner :url="url" color="#70b7fd" />
+  <el-footer>
+    <vue-about-me :copyright="copyright" />
+  </el-footer>
 </template>
 
 <script lang="ts">
@@ -16,6 +19,7 @@ import { defineComponent } from "vue";
 import BaseHeader from "./components/BaseHeader.vue";
 import ImageUpload from "./components/ImageUpload.vue";
 import GithubCorner from "./components/GithubCorner.vue";
+import VueAboutMe from "vue-about-me/sfc";
 
 import pkg from "../../package.json";
 
@@ -25,9 +29,18 @@ export default defineComponent({
     BaseHeader,
     ImageUpload,
     GithubCorner,
+    VueAboutMe,
   },
   data() {
     return {
+      copyright: {
+        name: "Char Dust",
+        repo: pkg.name,
+        author: pkg.author.name,
+        logo: "ri:character-recognition-line",
+        link: "https://github.com/YunYouJun/char-dust",
+        color: "black",
+      },
       url: pkg.repository.url,
     };
   },
