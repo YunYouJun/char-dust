@@ -84,7 +84,7 @@ jimp.read(imagePath).then((image) => {
 - [x] Convert to Char
 - [x] Console
 - [x] npm package
-- [ ] Gif
+- [ ] Gif (may be you want [google/gif-for-cli](https://github.com/google/gif-for-cli))
 
 ## Todo
 

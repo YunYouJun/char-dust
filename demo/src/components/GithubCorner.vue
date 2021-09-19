@@ -1,6 +1,6 @@
 <template>
   <a
-    :href="url"
+    :href="props.url"
     target="_blank"
     class="github-corner"
     aria-label="View source on Github"
@@ -27,32 +27,30 @@
   ></a>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
+import { computed } from "vue";
 
-export default defineComponent({
-  props: {
-    url: String,
-    color: {
-      type: String,
-      default: "black",
-    },
-  },
-  computed: {
-    styles() {
-      return {
-        fill: this.color,
-        color: "#fff",
-        position: "absolute",
-        top: 0,
-        border: 0,
-        right: 0,
-      };
-    },
-  },
+const props = withDefaults(
+  defineProps<{
+    url: string;
+    color: string;
+  }>(),
+  {
+    color: "black",
+  }
+);
+
+const styles = computed(() => {
+  return {
+    fill: props.color,
+    color: "#fff",
+    position: "absolute",
+    top: 0,
+    border: 0,
+    right: 0,
+  };
 });
 </script>
-
 
 <style>
 .github-corner:hover .octo-arm {

@@ -21,7 +21,7 @@
   <br />
 
   <el-upload
-    ref="imageUpload"
+    ref="imageUploadRef"
     drag
     action="/"
     :limit="1"
@@ -50,116 +50,108 @@
   </el-input>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
+import { ref, computed, reactive } from "vue";
 
-import { UploadFile } from "element-plus/lib/el-upload/src/upload.type";
+import { UploadFile } from "element-plus/lib/components/upload/src/upload.type";
 import { checkImageType } from "../utils/imageCommon";
 
 import { imageToText, getImageData, DEFAULT_AVAILABLE_CHARS } from "char-dust";
+import { ElMessage } from "element-plus";
 
-export default defineComponent({
-  data() {
-    return {
-      config: {
-        size: 300,
-        char: DEFAULT_AVAILABLE_CHARS,
-
-        scale: 100,
-      },
-
-      step: 50,
-      image: new Image(),
-      supportedFormats: ["jpg", "png", "gif"],
-
-      textarea: "",
-    };
-  },
-  computed: {
-    textareaStyle() {
-      return {
-        width: 100 / (this.config.scale / 100) + "%",
-        transformOrigin: "left top",
-        transform: `scale(${this.config.scale / 100})`,
-      };
-    },
-  },
-  methods: {
-    handleChange() {
-      if (this.image) {
-        this.scaleImageContainer(this.image);
-      }
-    },
-
-    convert() {
-      const imageData = getImageData(this.image);
-      const text = imageToText(imageData, this.config.char);
-      this.textarea = text.join("\n");
-      console.log(text);
-      this.$message.success("转化完成");
-    },
-
-    /**
-     * 当改变设置的图片大小时
-     */
-    onChange(file: UploadFile) {
-      if (file) {
-        this.previewImage(file);
-        (this.$refs.imageUpload as any).clearFiles();
-      }
-    },
-
-    beforeImageUpload(file: File) {
-      if (!checkImageType(file.type)) {
-        this.$message.error(
-          `目前只支持 ${this.supportedFormats.join("/")} 格式的文件`
-        );
-        return false;
-      }
-      return true;
-    },
-    /**
-     * 预览图片
-     */
-    previewImage(file: UploadFile) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file.raw);
-      reader.onload = (event) => {
-        this.image = new Image();
-        this.image.onload = () => {
-          if (this.image) {
-            this.scaleImageContainer(this.image);
-          }
-        };
-        if (event.target) {
-          this.image.src = event.target.result as string;
-        }
-      };
-    },
-    /**
-     * 缩放 Upload Image 容器大小
-     */
-    scaleImageContainer(image: HTMLImageElement) {
-      const uploadContainer = document.querySelector(
-        ".el-upload-dragger"
-      ) as HTMLElement;
-
-      let targetWidth = this.config.size;
-      if (!targetWidth && image.width) {
-        targetWidth = image.width;
-      }
-
-      const ratio = image.width / targetWidth;
-      const targetHeight = image.height / ratio;
-
-      image.width = targetWidth;
-      image.height = targetHeight;
-
-      uploadContainer.style.width = targetWidth + "px";
-      uploadContainer.style.height = targetHeight + "px";
-    },
-  },
+const config = reactive({
+  size: 300,
+  char: DEFAULT_AVAILABLE_CHARS,
+  scale: 100,
 });
+
+const step = ref(50);
+const image = ref(new Image());
+const supportedFormats = ["jpg", "png", "gif"];
+const textarea = ref("");
+const imageUploadRef = ref();
+
+const textareaStyle = computed(() => {
+  return {
+    width: 100 / (config.scale / 100) + "%",
+    transformOrigin: "left top",
+    transform: `scale(${config.scale / 100})`,
+  };
+});
+
+function handleChange() {
+  if (image.value) {
+    scaleImageContainer(image.value);
+  }
+}
+
+function convert() {
+  const imageData = getImageData(image.value);
+  const text = imageToText(imageData, config.char);
+  textarea.value = text.join("\n");
+  console.log(text);
+  ElMessage.success("转化完成");
+}
+
+/**
+ * 当改变设置的图片大小时
+ */
+function onChange(file: UploadFile) {
+  if (file) {
+    previewImage(file);
+    (imageUploadRef.value as any).clearFiles();
+  }
+}
+
+function beforeImageUpload(file: File) {
+  if (!checkImageType(file.type)) {
+    ElMessage.error(`目前只支持 ${supportedFormats.join("/")} 格式的文件`);
+    return false;
+  }
+  return true;
+}
+
+/**
+ * 预览图片
+ */
+function previewImage(file: UploadFile) {
+  const reader = new FileReader();
+  reader.readAsDataURL(file.raw);
+  reader.onload = (event) => {
+    image.value = new Image();
+    image.value.onload = () => {
+      if (image.value) {
+        scaleImageContainer(image.value);
+      }
+    };
+    if (event.target) {
+      image.value.src = event.target.result as string;
+    }
+  };
+}
+
+/**
+ * 缩放 Upload Image 容器大小
+ */
+function scaleImageContainer(image: HTMLImageElement) {
+  const uploadContainer = document.querySelector(
+    ".el-upload-dragger"
+  ) as HTMLElement;
+
+  let targetWidth = config.size;
+  if (!targetWidth && image.width) {
+    targetWidth = image.width;
+  }
+
+  const ratio = image.width / targetWidth;
+  const targetHeight = image.height / ratio;
+
+  image.width = targetWidth;
+  image.height = targetHeight;
+
+  uploadContainer.style.width = targetWidth + "px";
+  uploadContainer.style.height = targetHeight + "px";
+}
 </script>
 
 <style lang="scss">

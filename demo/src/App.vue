@@ -13,38 +13,27 @@
   </el-footer>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
+<script lang="ts" setup>
+import { ref } from "vue";
 import BaseHeader from "./components/BaseHeader.vue";
 import ImageUpload from "./components/ImageUpload.vue";
 import GithubCorner from "./components/GithubCorner.vue";
-import VueAboutMe from "vue-about-me/sfc";
+
+import VueAboutMe from "vue-about-me";
+import "vue-about-me/style.css";
 
 import pkg from "../../package.json";
 
-export default defineComponent({
-  name: "App",
-  components: {
-    BaseHeader,
-    ImageUpload,
-    GithubCorner,
-    VueAboutMe,
-  },
-  data() {
-    return {
-      copyright: {
-        name: "Char Dust",
-        repo: pkg.name,
-        author: pkg.author.name,
-        logo: "ri:character-recognition-line",
-        link: "https://github.com/YunYouJun/char-dust",
-        color: "black",
-      },
-      url: pkg.repository.url,
-    };
-  },
-});
+const copyright = {
+  name: "Char Dust",
+  repo: pkg.name,
+  author: pkg.author.name,
+  logo: "ri:character-recognition-line",
+  link: "https://github.com/YunYouJun/char-dust",
+  color: "black",
+};
+
+const url = ref(pkg.repository.url);
 </script>
 
 <style>
