@@ -4,6 +4,10 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import pkg from "../package.json";
 
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
+import Components from "unplugin-vue-components/vite";
+
 import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
@@ -11,6 +15,31 @@ export default defineConfig({
   base: `/${pkg.name}/`,
   plugins: [
     vue(),
+
+    // https://github.com/antfu/unplugin-icons
+    Icons(),
+
+    // https://github.com/antfu/unplugin-vue-components
+    Components({
+      // allow auto load markdown components under `./src/components/`
+      extensions: ["vue", "md"],
+
+      // allow auto import and register components used in markdown
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+
+      // custom resolvers
+      resolvers: [
+        // auto import icons
+        // https://github.com/antfu/unplugin-icons
+        IconsResolver({
+          // componentPrefix: "",
+          // enabledCollections: ['carbon']
+        }),
+      ],
+
+      dts: "src/components.d.ts",
+    }),
+
     VitePWA({
       manifest: {
         icons: [

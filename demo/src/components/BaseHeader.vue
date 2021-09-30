@@ -1,9 +1,9 @@
 <template>
   <h2>
-    <span class="iconify" data-icon="ri:image-line"></span>
+    <i-ri-image-line />
     &nbsp;
-    <span class="iconify" data-icon="ri:arrow-right-line"></span>
+    <i-ri-arrow-right-line />
     &nbsp;
-    <span class="iconify" data-icon="ri:file-text-line"></span>
+    <i-ri-file-text-line />
   </h2>
 </template>

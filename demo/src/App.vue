@@ -7,7 +7,7 @@
     <image-upload />
   </el-main>
 
-  <github-corner :url="url" color="#70b7fd" />
+  <!-- <github-corner :url="url" color="#70b7fd" /> -->
   <el-footer>
     <vue-about-me :copyright="copyright" />
   </el-footer>
@@ -17,7 +17,6 @@
 import { ref } from "vue";
 import BaseHeader from "./components/BaseHeader.vue";
 import ImageUpload from "./components/ImageUpload.vue";
-import GithubCorner from "./components/GithubCorner.vue";
 
 import VueAboutMe from "vue-about-me";
 import "vue-about-me/style.css";
