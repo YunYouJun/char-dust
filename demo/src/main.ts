@@ -9,7 +9,8 @@ import "./utils/test";
 import "./styles/index.scss";
 
 // https://github.com/YunYouJun/wc-github-corners
-import "wc-github-corners";
+// use cdn in index.html
+// import "wc-github-corners";
 
 const app = createApp(App);
 
