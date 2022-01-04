@@ -10,5 +10,5 @@
       "char-dust": ["src/index.ts"]
     }
   },
-  "include": ["src/*.ts"]
+  "exclude": ["dist", "node_modules"]
 }

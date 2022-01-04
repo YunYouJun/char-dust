@@ -1,5 +1,5 @@
 <template>
-  <h2>
+  <h2 text="3xl">
     <i-ri-image-line />
     &nbsp;
     <i-ri-arrow-right-line />

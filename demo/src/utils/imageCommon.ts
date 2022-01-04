@@ -2,7 +2,7 @@ const IMAGE_TYPES_RE: Record<string, RegExp> = {
   PNG: /image\/png/,
   JPG: /image\/jpe?g/,
   GIF: /image\/gif/,
-};
+}
 
 /**
  * 获取图片类型(png, jpg, gif)
@@ -12,13 +12,13 @@ const IMAGE_TYPES_RE: Record<string, RegExp> = {
  * @returns
  */
 export function getImageType(type: string): string {
+  // eslint-disable-next-line no-restricted-syntax
   for (const typeName in IMAGE_TYPES_RE) {
-    const typeRe = IMAGE_TYPES_RE[typeName];
-    if (typeRe.test(type)) {
-      return typeName;
-    }
+    const typeRe = IMAGE_TYPES_RE[typeName]
+    if (typeRe.test(type))
+      return typeName
   }
-  return "";
+  return ''
 }
 
 /**
@@ -29,11 +29,11 @@ export function getImageType(type: string): string {
  * @returns
  */
 export function checkImageType(type: string): boolean {
+  // eslint-disable-next-line no-restricted-syntax
   for (const typeName in IMAGE_TYPES_RE) {
-    const typeRe = IMAGE_TYPES_RE[typeName];
-    if (typeRe.test(type)) {
-      return true;
-    }
+    const typeRe = IMAGE_TYPES_RE[typeName]
+    if (typeRe.test(type))
+      return true
   }
-  return false;
+  return false
 }
