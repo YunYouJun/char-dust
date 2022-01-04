@@ -8,11 +8,9 @@ declare module 'vue' {
     BaseHeader: typeof import('./components/BaseHeader.vue')['default']
     ImageUpload: typeof import('./components/ImageUpload.vue')['default']
     IRiArrowRightLine: typeof import('~icons/ri/arrow-right-line')['default']
-    IRiExchangeLine: typeof import('~icons/ri/exchange-line')['default']
     IRiFileTextLine: typeof import('~icons/ri/file-text-line')['default']
     IRiImageLine: typeof import('~icons/ri/image-line')['default']
     IRiQrScan2Line: typeof import('~icons/ri/qr-scan2-line')['default']
-    IRiQrScanLine: typeof import('~icons/ri/qr-scan-line')['default']
     IRiUploadCloudLine: typeof import('~icons/ri/upload-cloud-line')['default']
   }
 }
