@@ -9,9 +9,11 @@ Convert image to char.
 
 > [由来 | Why char-dust?](https://www.yunyoujun.cn/posts/why-make-char-dust/)
 
-<div style="text-align:center">
-<img src="./demo/public/img/example/夹心酱.jpg" width='200' alt="夹心酱"/>
-<img src="./demo/public/img/example/jashin.jpg" width='200' alt="jashin char"/>
+<div align="center">
+<img src="https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/meme/yun-good-with-bg.jpg" width='200' alt="夹心酱"/>
+<img src="./demo/public/img/examples/xiao-yun-good-ascii.jpg" width='200' alt="xiao-yun char"/>
+<img src="./demo/public/img/examples/夹心酱.jpg" width='200' alt="夹心酱"/>
+<img src="./demo/public/img/examples/jashin.jpg" width='200' alt="jashin char"/>
 </div>
 
 ## Usage

@@ -1,4 +1,7 @@
 .el-textarea__inner {
+  --cd-text-color: black;
+  color: var(--cd-text-color);
+
   padding: 1rem;
 
   font-family: Menlo, monospace;
