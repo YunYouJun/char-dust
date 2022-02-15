@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/char-dust/sw.js', { scope: '/char-dust/' })})}
