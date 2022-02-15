@@ -1,6 +1,5 @@
 .el-textarea__inner {
-  --cd-text-color: black;
-  color: var(--cd-text-color);
+  color: var(--cd-text-color, black);
 
   padding: 1rem;
 
@@ -12,4 +11,22 @@
 
 hr {
   opacity: 0.2;
+}
+
+
+.preview-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.preview-image[src=""] {
+  visibility: hidden;
+}
+
+// char-dust
+.cd-text-container {
+  margin-top: 0.5rem;
 }

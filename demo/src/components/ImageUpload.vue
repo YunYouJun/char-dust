@@ -19,6 +19,10 @@
     </el-form-item>
   </el-form>
 
+  <div>
+    <el-color-picker v-model="textColor" />
+  </div>
+
   <hr>
   <br>
 
@@ -45,9 +49,9 @@
   </el-upload>
 
   <el-slider v-model="config.scale" show-input />
-
   <el-input
     v-model="textarea"
+    class="cd-text-container"
     type="textarea"
     autosize
     placeholder="ASCII 画"
@@ -57,6 +61,7 @@
 
 <script lang="ts" setup>
 import { computed, reactive, ref } from 'vue'
+import { useCssVar } from '@vueuse/core'
 
 import type { UploadFile } from 'element-plus/lib/components/upload/src/upload.type'
 
@@ -69,6 +74,8 @@ const config = reactive({
   char: DEFAULT_AVAILABLE_CHARS,
   scale: 100,
 })
+
+const textColor = useCssVar('--cd-text-color')
 
 const step = ref(50)
 const image = ref<HTMLImageElement>()
@@ -162,17 +169,3 @@ function scaleImageContainer(image: HTMLImageElement) {
   uploadContainer.style.height = `${targetHeight}px`
 }
 </script>
-
-<style lang="scss">
-.preview-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.preview-image[src=""] {
-  visibility: hidden;
-}
-</style>

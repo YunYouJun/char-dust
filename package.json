@@ -52,7 +52,7 @@
   },
   "lint-staged": {
     "*.{vue,ts}": [
-      "npm run lint"
+      "eslint --fix"
     ]
   }
 }
